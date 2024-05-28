@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include ActionView::RecordIdentifier
-  before_action :set_product!, only: %i[edit update destroy]
+  before_action :set_product!, only: %i[edit update show destroy]
 
   def index
     @products = Product.ordered
@@ -22,6 +22,10 @@ class ProductsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+
   end
 
   def edit; end
