@@ -1,0 +1,5 @@
+<%= turbo_stream.remove @product %>
+<%= render_turbo_stream_flash_messages %>
+<% if Product.none? %>
+  <%= turbo_stream.update Product.new, partial: 'products_empty' %>
+<% end %>

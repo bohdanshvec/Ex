@@ -1,0 +1,15 @@
+<%= turbo_stream_from 'products' %>
+<div class='m-3'>
+<%= link_to 'New product', new_product_path, data: { turbo_frame: dom_id(Product.new) } %><br>
+
+<%= turbo_frame_tag Product.new do %>
+  <% if @products.none? %>
+    <%= render 'products_empty' %>
+  <% end %>
+<% end %>
+<h1>Products :</h1>
+
+<%= turbo_frame_tag 'products' do %>
+  <%= render @products %>
+<% end %>
+</div>

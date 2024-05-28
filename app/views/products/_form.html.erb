@@ -1,0 +1,19 @@
+  <%= form_with(model: @product) do |f| %>
+
+  <% if @product.errors.any? %>
+    <div class="error-message">
+      <%= @product.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+    <%= f.label :title, autofocus: true %><br>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :body %><br>
+    <%= f.text_area :body %><br>
+
+    <div>
+      <%= f.submit 'Save' %>
+      <%= link_to 'Cancle', products_path %>
+    </div>
+
+  <% end %>
