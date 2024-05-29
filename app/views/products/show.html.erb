@@ -1,6 +1,26 @@
-<h2>Show page:</h2>
+<div class='m-2'>
+  <%= link_to 'Back to Products', products_path %>
 
-<div>
-  <%= @product.id %>
-  <%= @product.title %>
+  <h2>Show page:</h2>
+
+  <div>
+    <%= @product.id %>
+    <%= @product.title %>
+  </div>
+
+  <div>
+    <%= @product.body %><br/>
+  </div>
+
+  <div>
+    <%= link_to 'Add date', new_product_term_path(@product), data: { turbo_frame: dom_id(Term.new) }, class: 'btn btn-primary' %>
+  </div>
+
+  <%= turbo_frame_tag Term.new %>
+
+  <div>
+    <%= turbo_frame_tag 'terms' do %>
+      <%= render @terms %>
+    <% end %>
+  </div>
 </div>

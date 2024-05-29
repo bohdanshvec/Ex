@@ -1,0 +1,10 @@
+<% if last_min_date = @term.previous_date(@product, @term) %>
+  <%= turbo_stream.after last_min_date do %>
+    <%= render @term %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend 'terms', @term %>
+<% end %>
+
+<%= turbo_stream.update Term.new, '' %>
+<%= render_turbo_stream_flash_messages %>

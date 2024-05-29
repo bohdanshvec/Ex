@@ -1,10 +1,7 @@
   <%= form_with(model: @product) do |f| %>
 
-  <% if @product.errors.any? %>
-    <div class="error-message">
-      <%= @product.errors.full_messages.to_sentence.capitalize %>
-    </div>
-  <% end %>
+    <%= form_error_notification(@product) %>
+
     <%= f.label :title, autofocus: true %><br>
     <%= f.text_field :title %><br>
 

@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @terms = @product.terms.ordered
   end
 
   def edit; end

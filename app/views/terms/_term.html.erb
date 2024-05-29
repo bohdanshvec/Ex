@@ -1,0 +1,7 @@
+<%= turbo_frame_tag term do %>  
+  <div class='mt-2 d-flex gap-2'>
+    <%= l(term.date, format: :long) %>
+    <%= link_to 'Delete', [@product, term], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Edit', [:edit, @product, term], class: 'btn btn-secondary' %>
+  </div>
+<% end %>

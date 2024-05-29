@@ -1,0 +1,12 @@
+  <%= form_with(model: [@product, @term]) do |f| %>
+
+    <%= form_error_notification(@term) %>
+
+    <%= f.label :date, autofocus: true %>
+    <%= f.date_field :date %>
+
+    <div class='mt-1'>
+      <%= f.submit 'Add' %>
+      <%= link_to 'Cancle', product_path(@product) %>
+    </div>
+  <% end %>
