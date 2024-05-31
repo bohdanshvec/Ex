@@ -1,0 +1,20 @@
+<div class='mt-2 d-flex gap-2'>
+  <div>
+    <%= position.name %>
+  </div>
+
+  <div>
+    <%= position.description %>
+  </div>
+
+  <div>
+    <%= position.quantity %> *
+  </div>
+
+  <div>
+    <%= position.unit_price %>
+  </div>
+
+  <%= link_to 'Edit', [:edit, product, term, position], data: { turbo_frame: '_top' } %>
+  <%= link_to 'Delete', [product, term, position], data: {turbo_method: :delete, turbo_frame: '_top', turbo_confirm: 'Are you sure?' } %>
+</div>

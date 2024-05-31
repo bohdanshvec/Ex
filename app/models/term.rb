@@ -1,5 +1,6 @@
 class Term < ApplicationRecord
   belongs_to :product
+  has_many :positions, dependent: :destroy
 
   validates :date, presence: true, uniqueness: { scope: :product_id}
 

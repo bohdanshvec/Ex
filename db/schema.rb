@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_125254) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_29_143204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "positions", force: :cascade do |t|
+    t.bigint "term_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["term_id"], name: "index_positions_on_term_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "title", null: false
@@ -31,5 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_125254) do
     t.index ["product_id"], name: "index_terms_on_product_id"
   end
 
+  add_foreign_key "positions", "terms"
   add_foreign_key "terms", "products"
 end

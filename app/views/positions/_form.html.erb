@@ -1,0 +1,25 @@
+<%= form_with(model: [@product, @term, @position]) do |f| %>
+  <%= form_error_notification(@position) %>
+  <div>
+    <%= f.label :name, autofocus: true %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  <div>
+  </div>
+    <%= f.label :unit_price %>
+    <%= f.number_field :unit_price, step: 1 %>
+  </div>
+  <div>
+  <div>
+    <%= f.submit 'Save' %>
+    <%= link_to 'Cancel', product_path(@product) %>
+  </div>
+<% end %>
+
