@@ -11,18 +11,27 @@ class PositionsController < ApplicationController
     @position = @term.positions.build(position_params)
 
     if @position.save
-      redirect_to product_path(@product), notice: "Position was successfully created."
+      respond_to do |format|
+        format.html { redirect_to product_path(@product), notice: "Position was successfully created." }
+        format.turbo_stream { flash.now[:notice] = 'Position was successfully created.' }
+      end
+      # redirect_to product_path(@product), notice: "Position was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    # byebug
   end
 
   def update
     if @position.update(position_params)
-      redirect_to product_path(@product), notice: 'Position updated!'
+      respond_to do |format|
+        format.html { redirect_to product_path(@product), notice: 'Position updated!' }
+        format.turbo_stream { flash.now[:notice] = 'Position updated!' }
+      end
+      # redirect_to product_path(@product), notice: 'Position updated!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,7 +39,11 @@ class PositionsController < ApplicationController
 
   def destroy
     @position.destroy
-    redirect_to @product, notice: 'Position delete!'
+    respond_to do |format|
+      format.html { redirect_to @product, notice: 'Position delete!' }
+      format.turbo_stream { flash.now[:notice] = 'Position delete!' }
+    end
+    # redirect_to @product, notice: 'Position delete!'
   end
 
   private
@@ -44,7 +57,7 @@ class PositionsController < ApplicationController
   end
 
   def set_position
-    @position = Position.find(params[:id])
+    @position = @term.positions.find(params[:id])
   end
 
   def position_params

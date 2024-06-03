@@ -6,4 +6,8 @@ class Position < ApplicationRecord
   validates :unit_price, presence: true, numericality: { greater_than: 0 }
 
   delegate :product, to: :term 
+
+  def total_price
+    quantity * unit_price
+  end
 end

@@ -23,4 +23,11 @@
       <%= render @terms %>
     <% end %>
   </div>
+  <div>
+    <%= turbo_frame_tag :total do %>
+      <%= render 'products/total' %>
+    <% end %>
+  </div>
+
+
 </div>

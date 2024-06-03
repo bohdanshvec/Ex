@@ -1,5 +1,5 @@
 <%= turbo_frame_tag product do %>
-  <%= tag.div id: dom_id(product) %>
+  <div>
     <%= product.id %>
     <%= link_to product.title, product_path(product), data: { turbo_frame: '_top' } %><br/>
     <%= product.body %>

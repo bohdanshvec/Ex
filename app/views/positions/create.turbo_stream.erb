@@ -1,0 +1,4 @@
+<%= turbo_stream.update dom_id(Position.new, dom_id(@term)), '' %>
+<%= turbo_stream.append  dom_id(@term, :positions), @position %>
+<%= render_turbo_stream_flash_messages %>
+<%= render_turbo_stream_total_prace %>

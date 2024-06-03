@@ -1,14 +1,21 @@
 <%= turbo_frame_tag term do %> 
-  <div class='card my-1'>
+  <div class='card my-1 p-1'>
+  <%= turbo_frame_tag dom_id(term, :edit) do %>
     <div class='mt-2 d-flex gap-2'>
       <%= l(term.date, format: :long) %>
       <%= link_to 'Delete', [@product, term], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       <%= link_to 'Edit', [:edit, @product, term], class: 'btn btn-secondary' %>
-      <%= link_to 'Add position', [:new, @product, term, :position], data: { turbo_frame: '_top' }, class: 'btn btn-primary' %>
+      <%= link_to 'Add position', [:new, @product, term, :position], data: { turbo_frame: dom_id(Position.new, dom_id(term)) }, class: 'btn btn-primary' %>
     </div>
+  <% end %>
 
+    <%= turbo_frame_tag dom_id(Position.new, dom_id(term)) %>
+    
     <div>
-      <%= render term.positions, product: @product, term: term %>
+      <%= turbo_frame_tag dom_id(term, :positions) do %>
+        <%= render term.positions, term: term %>
+      <% end %>
     </div>
   </div>
+
 <% end %>
