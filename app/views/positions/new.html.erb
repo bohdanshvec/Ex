@@ -1,3 +1,5 @@
 <h2>New position for <%= l(@term.date, folmat: :long) %>:</h2>
 
-<%= render 'form' %>
+<%= turbo_frame_tag dom_id(@position, dom_id(@term)) do %>
+  <%= render 'form' %>
+<% end %>

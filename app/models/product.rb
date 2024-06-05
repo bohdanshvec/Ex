@@ -2,6 +2,8 @@ class Product < ApplicationRecord
 
   has_many :terms, dependent: :destroy
   belongs_to :company
+  
+  has_many :positions, through: :terms
 
   validates :title, presence: true, length: { minimum: 2 }
   # validates :body, presence: true, length: { minimum: 2 }
@@ -12,4 +14,8 @@ class Product < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to "products" }
 
   broadcasts_to -> (product) { 'products' }, inserts_by: :prepend
+
+  def total_price
+    positions.sum(&:total_price)
+  end
 end

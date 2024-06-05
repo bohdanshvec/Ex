@@ -19,3 +19,18 @@
     }
   }
 }
+
+.empty-state-total {
+  padding: var(--space-m);
+  border: var(--border);
+  border-style: dashed;
+  text-align: center;
+
+  &--only-child {
+    display: revert;
+
+    &:only-child {
+      display: none;
+    }
+  }
+}

@@ -6,6 +6,9 @@ class Term < ApplicationRecord
 
   scope :ordered, -> { order(date: :asc)}
 
+  # broadcasts_to ->(term) { [term.product, :terms] }, inserts_by: :append
+  # after_create_commit -> { broadcast_prepend_to :terms, partial: "terms/term", target: :terms }
+
   # def previous_date
   #   product.terms.ordered.where("date < ?", date).last
   # end

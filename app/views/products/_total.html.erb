@@ -1,0 +1,5 @@
+<% unless @product.positions.none? %>
+  <div class='empty-state'>
+    Total prace: <%= @product.total_price %>
+  </div>
+<% end %>
