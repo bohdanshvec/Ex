@@ -1,4 +1,6 @@
-<div>
-  <h3>Products empty</h3>
-  <%= link_to 'Add product', new_product_path, class: 'btn btn-primary' %>
+<div class="empty-state empty-state--only-child">
+  <p class="empty-state__text">
+    You don't have any quotes yet!
+  </p>
+  <%= link_to 'Add product', new_product_path, class: 'btn btn-primary', data: { turbo_frame: dom_id(Product.new) } %>
 </div>
