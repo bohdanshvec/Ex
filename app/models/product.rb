@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   # after_update_commit -> { broadcast_replace_later_to "products" }
   # after_destroy_commit -> { broadcast_remove_to "products" }
 
-  broadcasts_to -> (product) { 'products' }, inserts_by: :prepend
+  broadcasts_to -> (product) { [product.company, 'products'] }, inserts_by: :prepend
 
   def total_price
     positions.sum(&:total_price)

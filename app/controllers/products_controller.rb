@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product!, only: %i[edit update show destroy]
 
   def index
-    @products = Product.ordered
+    @products = current_company.products.ordered
   end
 
   def new
@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_company.products.build(product_params)
 
     if @product.save
       respond_to do |format|
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product!
-    @product = Product.find(params[:id])
+    @product = current_company.products.find(params[:id])
   end
 
   def product_params

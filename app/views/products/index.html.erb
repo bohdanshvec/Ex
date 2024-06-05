@@ -1,4 +1,4 @@
-<%= turbo_stream_from 'products' %>
+<%= turbo_stream_from [current_company, 'products'] %>
 
 <div class='m-3'>
   <%= link_to 'New product', new_product_path, data: { turbo_frame: dom_id(Product.new) } %><br>

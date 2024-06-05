@@ -1,0 +1,10 @@
+<div class='m-2'>
+  <h1>Product editor</h1>
+  <p>A blazing fast product editor built with Hotwire</p>
+  <br/>
+  <% if user_signed_in? %>
+    <%= link_to 'Products page', products_path, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Sing In', new_user_session_path, class: 'btn btn-info' %>
+  <% end %>
+</div>
