@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 
   has_many :terms, dependent: :destroy
+  belongs_to :company
 
   validates :title, presence: true, length: { minimum: 2 }
   # validates :body, presence: true, length: { minimum: 2 }
